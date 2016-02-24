@@ -1,0 +1,25 @@
+doctor.vtl
+
+<h2>$doctor.getName()</h2>
+
+<ul>
+#foreach($patient in $patients)
+<li><h4>$patient.getName()</h4></li>
+<form action="/delete/patient/$patient.getId()" method="post">
+<input id="doctorId" name="doctorId" type=hidden value="$doctor.getId()">
+<button type="submit" id="$patient.getId()" name="$patient.getId()" class="btn btn-danger">
+  Delete Patient</button></h4>
+</form>
+#end
+</ul>
+
+
+<form action="/:id" method="post">
+  <input id="patientId" name="patientId" type=hidden value="$patient.getId()">
+  <label>Add a Patient</label>
+  <input type="text" name="patientName" id="patientName" required>
+  <input id="doctorId" name="doctorId" type=hidden value="$doctor.getId()">
+  <button type="submit" name="patientButton" class="btn btn-info">Submit</button>
+</form>
+
+<a href="/">Go Back Home</a>

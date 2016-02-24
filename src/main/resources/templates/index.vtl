@@ -1,0 +1,22 @@
+index.vtl
+
+<form action="/new/doctor" method="post">
+  <label for="">Add a Doctor</label>
+  <input type="text" name="doctorName" id="doctorName" required>
+  <button type="submit" class="btn btn-primary" name="button">Submit</button>
+</form>
+<form action="/new/specialty" method="post">
+  <label for="">Add a Specialty</label>
+  <input type="text" name="specialty" id="specialty" required>
+  <button type="submit" class="btn btn-primary" name="button">Submit</button>
+</form>
+<a class="btn btn-default" href="/add/specialty">Add a Specialty to a Doctor</a>
+<hr>
+#foreach($doctor in $doctors)
+<h4><a href="/$doctor.getId()">$doctor.getName()</a>
+  <form action="/delete/doctor/$doctor.getId()" method="post">
+  <input id="doctorId" name="doctorId" type=hidden value="$doctor.getId()">
+  <button type="submit" id="$doctor.getId()" name="deleteDoctor" class="btn btn-danger">
+    Delete Doctor</button></h4>
+  </form>
+#end
